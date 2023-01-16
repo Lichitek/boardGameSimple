@@ -9,15 +9,6 @@ public class turnManager : MonoBehaviour
     public List<Text> turnText = new List<Text>();
     public List<Text> scoreText = new List<Text>();
     public int idPlayering;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void RunTurn(int numberBox)
     {

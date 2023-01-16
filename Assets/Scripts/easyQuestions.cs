@@ -71,6 +71,7 @@ public class easyQuestions : MonoBehaviour
         if(playerTurn.players[playerTurn.idPlayering].score == number)
         {
             playerTurn.players[playerTurn.idPlayering].Return();
+            
         }
 
         playerTurn.RunTurn(playerTurn.players[playerTurn.idPlayering].numberBox);
