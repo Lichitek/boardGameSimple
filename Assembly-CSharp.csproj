@@ -58,6 +58,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\easyQuestions.cs" />
     <Compile Include="Assets\Scripts\turnManager.cs" />
+    <Compile Include="Assets\Scenes\Mainmenu.cs" />
+    <Compile Include="Assets\Scenes\backgroungmusic.cs" />
+    <Compile Include="Assets\Scenes\Soundmanager.cs" />
     <Compile Include="Assets\Scripts\playerMovement.cs" />
     <Compile Include="Assets\Scripts\route.cs" />
   </ItemGroup>
