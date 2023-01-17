@@ -58,11 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\easyQuestions.cs" />
     <Compile Include="Assets\Scripts\turnManager.cs" />
-    <Compile Include="Assets\Scenes\Mainmenu.cs" />
-    <Compile Include="Assets\Scenes\backgroungmusic.cs" />
-    <Compile Include="Assets\Scenes\Soundmanager.cs" />
+    <Compile Include="Assets\Scripts\Mainmenu.cs" />
+    <Compile Include="Assets\Scripts\backgroungmusic.cs" />
+    <Compile Include="Assets\Scripts\Soundmanager.cs" />
     <Compile Include="Assets\Scripts\playerMovement.cs" />
     <Compile Include="Assets\Scripts\route.cs" />
+    <Compile Include="Assets\Scripts\pauseMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\questionsHard.txt" />
