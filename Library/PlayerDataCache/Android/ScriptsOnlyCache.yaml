@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - Soundmanager
     - backgroungmusic
     - easyQuestions
+    - pauseMenu
     - playerMovement
     - route
     - turnManager
@@ -48,6 +49,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
@@ -56,28 +59,34 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
+    - Class: 111
+      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 1482}
     - Class: 114
       Script: {instanceID: 2008}
     - Class: 114
-      Script: {instanceID: 2296}
+      Script: {instanceID: 2106}
     - Class: 114
-      Script: {instanceID: 2314}
+      Script: {instanceID: 2298}
     - Class: 114
-      Script: {instanceID: 2428}
+      Script: {instanceID: 2316}
     - Class: 114
-      Script: {instanceID: 2604}
+      Script: {instanceID: 2430}
     - Class: 114
-      Script: {instanceID: 2790}
+      Script: {instanceID: 2606}
     - Class: 114
-      Script: {instanceID: 2878}
+      Script: {instanceID: 2792}
     - Class: 114
-      Script: {instanceID: 2944}
+      Script: {instanceID: 2880}
     - Class: 114
-      Script: {instanceID: 4368}
+      Script: {instanceID: 2946}
     - Class: 114
-      Script: {instanceID: 4536}
+      Script: {instanceID: 4106}
+    - Class: 114
+      Script: {instanceID: 4370}
+    - Class: 114
+      Script: {instanceID: 4538}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -128,21 +137,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2008}
     - Class: 114
-      Script: {instanceID: 2314}
+      Script: {instanceID: 2316}
     - Class: 114
-      Script: {instanceID: 2428}
+      Script: {instanceID: 2430}
     - Class: 114
-      Script: {instanceID: 2604}
+      Script: {instanceID: 2606}
     - Class: 114
-      Script: {instanceID: 2790}
+      Script: {instanceID: 2792}
     - Class: 114
-      Script: {instanceID: 2878}
+      Script: {instanceID: 2880}
     - Class: 114
-      Script: {instanceID: 3084}
+      Script: {instanceID: 3086}
     - Class: 114
-      Script: {instanceID: 3216}
+      Script: {instanceID: 3218}
     - Class: 114
-      Script: {instanceID: 4104}
+      Script: {instanceID: 4106}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -252,13 +261,19 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
+      Hash: c8c5e65e9fb858572516474d6e2102bc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: pauseMenu
+  - hash:
+      serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 047ecc1e3a52704e98534ce2d267a68e
+      Hash: 7109e5ade369cd305886d903ac4fd54a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: easyQuestions
@@ -626,4 +641,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/menuScene.unity
   - Assets/Scenes/mainScene.unity
-  playerPath: "D:/\u0424\u0438\u0437_\u043C\u043E\u0434\u0435\u043B\u044C_1/demoGames/testingAndroid.apk"
+  playerPath: D:/new/testingAndroid.apk

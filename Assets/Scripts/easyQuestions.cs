@@ -15,6 +15,8 @@ public class easyQuestions : MonoBehaviour
     //public List<playerMovement> players = new List<playerMovement>();
     public turnManager playerTurn;
 
+    public Animation anim;
+
     int number;
     string[] questionsEasy;
     string easyFilePath, easyFileName;
@@ -42,7 +44,7 @@ public class easyQuestions : MonoBehaviour
     IEnumerator Question()
     {
         number = playerTurn.players[playerTurn.idPlayering].score;
-        Time.timeScale = 0f;
+
         int questionNumber = Random.Range(0, 3);
         switch (playerTurn.players[playerTurn.idPlayering].typeQuiz)
         {
@@ -57,9 +59,12 @@ public class easyQuestions : MonoBehaviour
                 answerText.text = questionsHard[questionNumber].Substring(questionsHard[questionNumber].IndexOf("=") + 1);
                 break;
         }
+
         answer.SetActive(false);
         field.SetActive(true);
+        anim.Play();
         playerTurn.players[playerTurn.idPlayering].startQuiz = false;
+        //Time.timeScale = 0f;
         yield return null;
 
     }
