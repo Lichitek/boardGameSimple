@@ -9,6 +9,7 @@ TagManager:
   - hardTile
   - Start
   - road
+  - finishTile
   layers:
   - Default
   - TransparentFX

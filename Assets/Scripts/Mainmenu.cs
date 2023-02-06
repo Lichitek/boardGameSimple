@@ -9,8 +9,13 @@ public class Mainmenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void Back()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
     public void QuiteGame()
     {
-        Debug.Log("Quite");
+        Application.Quit();
     }
 }

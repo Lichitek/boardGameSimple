@@ -19,6 +19,10 @@ public class playerMovement : MonoBehaviour
     bool isMoving;
     int backSteps;
 
+    public turnManager turnMan;
+    public Image endGame;
+    public List<Text> scores = new List<Text>();
+
     void Start()
     {
         score = 0;
@@ -137,12 +141,22 @@ public class playerMovement : MonoBehaviour
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 16f * Time.deltaTime));
     }
 
+    void endOfGame()
+    {
+        Time.timeScale = 0f;
+        endGame.gameObject.SetActive(true);
+        scores[0].text = turnMan.players[0].score.ToString();
+        scores[1].text = turnMan.players[1].score.ToString();
 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         switch (other.gameObject.tag)
         {
+            case "finishTile":
+                endOfGame();
+                break;
             case "easyTile":
                 typeQuiz = "easy";
                 break;

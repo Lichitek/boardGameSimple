@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using System.Linq;
 
 public class easyQuestions : MonoBehaviour
 {
@@ -15,21 +14,16 @@ public class easyQuestions : MonoBehaviour
     //public List<playerMovement> players = new List<playerMovement>();
     public turnManager playerTurn;
 
+    public questions questions;
+
     public Animation anim;
 
     int number;
-    string[] questionsEasy;
-    string easyFilePath, easyFileName;
-    string[] questionsHard;
-    string hardFilePath, hardFileName;
+
 
     void Start()
     {
-        easyFileName = "questions.txt";
-        easyFilePath = Application.dataPath + "/" + easyFileName;
 
-        hardFileName = "questionsHard.txt";
-        hardFilePath = Application.dataPath + "/" + hardFileName;
     }
 
     
@@ -45,18 +39,18 @@ public class easyQuestions : MonoBehaviour
     {
         number = playerTurn.players[playerTurn.idPlayering].score;
 
-        int questionNumber = Random.Range(0, 3);
+        int questionNumber = Random.Range(0, questions.questionsEasy.Length);
         switch (playerTurn.players[playerTurn.idPlayering].typeQuiz)
         {
             case "easy":
-                questionsEasy = File.ReadAllLines(easyFilePath);
-                questionText.text = questionsEasy[questionNumber].Substring(0, questionsEasy[questionNumber].IndexOf("="));
-                answerText.text = questionsEasy[questionNumber].Substring(questionsEasy[questionNumber].IndexOf("=") + 1);
+                //questionsEasy = File.ReadAllLines(questions.easyFNameAdmin);
+                questionText.text = questions.questionsEasy[questionNumber].Substring(0, questions.questionsEasy[questionNumber].IndexOf("="));
+                answerText.text = questions.questionsEasy[questionNumber].Substring(questions.questionsEasy[questionNumber].IndexOf("=") + 1);
                 break;
             case "hard":
-                questionsHard = File.ReadAllLines(hardFilePath);
-                questionText.text = questionsHard[questionNumber].Substring(0, questionsHard[questionNumber].IndexOf("="));
-                answerText.text = questionsHard[questionNumber].Substring(questionsHard[questionNumber].IndexOf("=") + 1);
+                //questionsHard = File.ReadAllLines(questions.hardFNameAdmin);
+                questionText.text = questions.questionsHard[questionNumber].Substring(0, questions.questionsHard[questionNumber].IndexOf("="));
+                answerText.text = questions.questionsHard[questionNumber].Substring(questions.questionsHard[questionNumber].IndexOf("=") + 1);
                 break;
         }
 
