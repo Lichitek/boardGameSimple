@@ -6,13 +6,15 @@ using System.IO;
 
 public class questions : MonoBehaviour
 {
-    public Dropdown variants;
+    public Dropdown variantsAdd;
+    public Dropdown variantsDel;
     public InputField questionField;
     public InputField answerField;
-
     public Text questionTexts;
-
     public InputField questionID;
+
+    public bool check1;
+    public bool check2;
 
     public string easyFNameAdmin, hardFNameAdmin;
     public string easyFNameUser, hardFNameUser;
@@ -23,83 +25,124 @@ public class questions : MonoBehaviour
     public string[] questionsEasy;
     public string[] questionsHard;
 
+    public Text allertQuestion;
+    public Text allertAnsw;
+
+    public bool checkIn;
+
     void Start()
     {
         StartPathWay();
         //combineQuestions();
-    }
+        check1 = false;
+        check2 = false;
+}
 
 
     void Update()
     {
-
+        if (checkIn)
+            checkInput();
     }
 
-
+    void checkInput()
+    {
+        if (questionField.text.Length > 373)
+        {
+            allertQuestion.gameObject.SetActive(true);
+            allertQuestion.text = "Лишние символы: " + (questionField.text.Length - 373).ToString();
+            Debug.Log("Длинно на" + (questionField.text.Length - 373));
+        }
+        else
+            allertQuestion.gameObject.SetActive(false);
+        if (answerField.text.Length > 250)
+        {
+            allertAnsw.gameObject.SetActive(true);
+            allertAnsw.text = "Лишние символы: " + (answerField.text.Length - 250).ToString();
+            Debug.Log("Длинно на" + (answerField.text.Length - 250));
+        }
+        else
+            allertAnsw.gameObject.SetActive(false);
+    }
     void StartPathWay()
     {
-        easyFPathAdmin = Application.dataPath + "/" + easyFNameAdmin + ".txt";
-        hardFPathAdmin = Application.dataPath + "/" + hardFNameAdmin + ".txt";
-        easyFPathUser = Application.dataPath + "/" + easyFNameUser + ".txt";
-        hardFPathUser = Application.dataPath + "/" + hardFNameUser + ".txt";
-        questionsEasy = File.ReadAllLines(easyFPathAdmin);
-        questionsHard = File.ReadAllLines(hardFPathAdmin);
+        easyFPathAdmin = Application.dataPath + "/StreamingAssets" + "/" + easyFNameAdmin + ".txt";
+        hardFPathAdmin = Application.dataPath + "/StreamingAssets" + "/" + hardFNameAdmin + ".txt";
+        easyFPathUser = Application.dataPath + "/StreamingAssets" + "/" + easyFNameUser + ".txt";
+        hardFPathUser = Application.dataPath + "/StreamingAssets" + "/" + hardFNameUser + ".txt";
+        //questionsEasy = File.ReadAllLines(easyFPathAdmin);
+        //questionsHard = File.ReadAllLines(hardFPathAdmin);
     }
 
     public void AddUserQuestion()
     {
         string newQuestion = questionField.text + " =" + answerField.text;
-        switch (variants.value)
+        if (!(allertAnsw.gameObject.activeSelf && allertQuestion.gameObject.activeSelf) && questionField.text.Length > 0 && answerField.text.Length > 0)
         {
-            case 0:
-                File.AppendAllText(easyFPathUser, newQuestion + "\n");
-                break;
+            switch (variantsAdd.value)
+            {
+                case 0:
+                    File.AppendAllText(easyFPathUser, newQuestion + "\n");
+                    break;
 
-            case 1:
-                File.AppendAllText(hardFPathUser, newQuestion + "\n");
-                break;
+                case 1:
+                    File.AppendAllText(hardFPathUser, newQuestion + "\n");
+                    break;
+            }
+            questionField.Select();
+            questionField.text = "";
+            answerField.Select();
+            answerField.text = "";
         }
-        questionField.Select();
-        questionField.text = "";
-        answerField.Select();
-        answerField.text = "";
+        else
+        {
+            Debug.Log("lol");
+        }
     }
-    public string[] lines;
+    
     public void DeleteUserQuestion()
     {
-        switch (variants.value)
-        {
-            case 0:
-                lines = File.ReadAllLines(easyFPathUser);                
-                break;
+        string[] linesEasy = File.ReadAllLines(easyFPathUser);
+        string[] linesHard = File.ReadAllLines(hardFPathUser);
 
-            case 1:
-                lines = File.ReadAllLines(hardFPathUser);
-                break;
-        }
-        string[] newLines = new string[lines.Length - 1];
+        string[] newLinesEasy = new string[linesEasy.Length - 1];
+        string[] newLinesHard = new string[linesHard.Length - 1];
         int j = 0;
-        for(int i = 0; i<lines.Length; i++)
-        {
-            if ((i + 1).ToString() == questionID.text)
-                Debug.Log(lines[i]);
-            else
-            {
-                newLines[j] = lines[i];
-                j++;
-            }              
-            
-        }
-        switch (variants.value)
+        switch (variantsDel.value)
         {
             case 0:
-                File.WriteAllLines(easyFPathUser, newLines);
+                for (int i = 0; i < linesEasy.Length; i++)
+                {
+                    if ((i + 1).ToString() == questionID.text)
+                        Debug.Log(linesEasy[i]);
+                    else
+                    {
+                        newLinesEasy[j] = linesEasy[i];
+                        j++;
+                    }
+                }
+                File.WriteAllLines(easyFPathUser, newLinesEasy);
                 break;
 
             case 1:
-                File.WriteAllLines(hardFPathUser, newLines);
+                for (int i = 0; i < linesHard.Length; i++)
+                {
+                    if ((i + 1).ToString() == questionID.text)
+                        Debug.Log(linesHard[i]);
+                    else
+                    {
+                        newLinesHard[j] = linesHard[i];
+                        j++;
+                    }
+                }
+                File.WriteAllLines(hardFPathUser, newLinesHard);
                 break;
         }
+
+        variantsAdd.Select();
+        variantsDel.value = 0;
+        questionID.Select();
+        questionID.text = "";
     }
 
     public string[] questionList;
@@ -131,17 +174,40 @@ public class questions : MonoBehaviour
             questionTexts.text += (i + 1).ToString() + ") " + str + "\n";
         }
     }
+    public void checkek1(Toggle toggle)
+    {
+        check1 = toggle.isOn;
 
+    }
+    public void checkek2(Toggle toggle)
+    {
+        check2 = toggle.isOn;
+
+    }
     public void combineQuestions()
     {
         StartPathWay();
-        string[] questionsEasyAdmin = File.ReadAllLines(easyFPathAdmin);
-        string[] questionsEasyUser = File.ReadAllLines(easyFPathUser);
+        string[] questionsEasyAdmin = new string[0];
+        string[] questionsEasyUser = new string[0];
+        string[] questionsHardAdmin = new string[0];
+        string[] questionsHardUser = new string[0];
+        if (check1)
+        {
+            questionsEasyAdmin = File.ReadAllLines(easyFPathAdmin);
+            questionsHardAdmin = File.ReadAllLines(hardFPathAdmin);
+        }
+        if (check2)
+        {
+            questionsEasyUser = File.ReadAllLines(easyFPathUser);
+            questionsHardUser = File.ReadAllLines(hardFPathUser);
+        }
+
+        
         questionsEasy = new string[questionsEasyUser.Length + questionsEasyAdmin.Length];
         int j = 0;
         for (int i = 0; i < (questionsEasyAdmin.Length + questionsEasyUser.Length); i++)
         {
-            if (i < questionsEasyAdmin.Length)
+            if (i < questionsEasyAdmin.Length && questionsEasyAdmin.Length > 0)
             {
                 questionsEasy[i] = questionsEasyAdmin[i];
             }                
@@ -152,13 +218,12 @@ public class questions : MonoBehaviour
             }                
         }
 
-        string[] questionsHardAdmin = File.ReadAllLines(hardFPathAdmin);
-        string[] questionsHardUser = File.ReadAllLines(hardFPathUser);
+        
         questionsHard = new string[questionsHardUser.Length + questionsHardAdmin.Length];
         j = 0;
         for (int i = 0; i < (questionsHardAdmin.Length + questionsHardUser.Length); i++)
         {
-            if (i < questionsHardAdmin.Length)
+            if (i < questionsHardAdmin.Length && questionsHardAdmin.Length > 0)
             {
                 questionsHard[i] = questionsHardAdmin[i];
             }
@@ -169,5 +234,6 @@ public class questions : MonoBehaviour
             }
         }
     }
+    
 
 }

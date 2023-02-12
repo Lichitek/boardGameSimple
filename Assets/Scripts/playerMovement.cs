@@ -14,12 +14,11 @@ public class playerMovement : MonoBehaviour
 
     public List<Sprite> imgNumber = new List<Sprite>();
     public Image dice;
-    public turnManager turn;
+    public turnManager turnMan;
     int routePosition;
     bool isMoving;
     int backSteps;
 
-    public turnManager turnMan;
     public Image endGame;
     public List<Text> scores = new List<Text>();
 
@@ -35,7 +34,7 @@ public class playerMovement : MonoBehaviour
     }
     public void RollDice()
     {
-        if (!isMoving && numberBox == turn.idPlayering)
+        if (!isMoving && numberBox == turnMan.idPlayering)
         {
             startQuiz = false;
             steps = Random.Range(1, 7);

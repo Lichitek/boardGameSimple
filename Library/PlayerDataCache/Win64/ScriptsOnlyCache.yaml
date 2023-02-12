@@ -4,9 +4,9 @@ ScriptsOnlyBuild:
     - Mainmenu
     - Soundmanager
     - backgroungmusic
-    - easyQuestions
     - pauseMenu
     - playerMovement
+    - questionManager
     - questions
     - route
     - turnManager
@@ -80,6 +80,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: questions
     methodName: questionFillList
+  - assembly: Assembly-CSharp
+    fullTypeName: Mainmenu
+    methodName: Back
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -111,10 +114,13 @@ ScriptsOnlyBuild:
     fullTypeName: pauseMenu
     methodName: Resume
   - assembly: Assembly-CSharp
+    fullTypeName: questions
+    methodName: checkek2
+  - assembly: Assembly-CSharp
     fullTypeName: pauseMenu
     methodName: Pause
   - assembly: Assembly-CSharp
-    fullTypeName: easyQuestions
+    fullTypeName: questionManager
     methodName: AddScore
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
@@ -126,6 +132,9 @@ ScriptsOnlyBuild:
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
   - assembly: Assembly-CSharp
+    fullTypeName: questions
+    methodName: checkek1
+  - assembly: Assembly-CSharp
     fullTypeName: pauseMenu
     methodName: LoadMenu
   - assembly: Assembly-CSharp
@@ -138,7 +147,7 @@ ScriptsOnlyBuild:
     fullTypeName: playerMovement
     methodName: RollDice
   - assembly: Assembly-CSharp
-    fullTypeName: easyQuestions
+    fullTypeName: questionManager
     methodName: CloseTab
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
@@ -152,9 +161,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: questions
     methodName: combineQuestions
-  - assembly: UnityEngine.CoreModule
-    fullTypeName: UnityEngine.GameObject
-    methodName: SetActive
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -213,6 +219,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 1560}
+    - Class: 114
+      Script: {instanceID: 1664}
     - Class: 114
       Script: {instanceID: 2120}
     - Class: 114
@@ -504,10 +512,10 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 67e83af9696db7da457bc8870df17067
+      Hash: 09fe27a398dee009e7ea3d14d9f1aed3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: easyQuestions
+    className: questionManager
   - hash:
       serializedVersion: 2
       Hash: a1aa98c78061c6f03a8c124cda576e67
@@ -552,7 +560,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: cf4586b8d50062a8711a313db9aea935
+      Hash: 1e392b3e032bd44c9ef1120904a32095
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: questions
@@ -636,7 +644,7 @@ ScriptsOnlyBuild:
     className: ToggleGroup
   - hash:
       serializedVersion: 2
-      Hash: d667e005c6ea3c02c3e5b4361a1d91b3
+      Hash: f058d87eaf4ff2071c389e5077e98a99
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: turnManager
@@ -840,7 +848,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 61e943fd2bf2dcd3b8fc88201d8bb5b9
+      Hash: 9b49416782c850c8592d2462f90aae89
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: playerMovement

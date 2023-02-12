@@ -6,28 +6,38 @@ using UnityEngine.UI;
 public class turnManager : MonoBehaviour
 {
     public List<playerMovement> players = new List<playerMovement>();
-    public List<Text> turnText = new List<Text>();
-    public List<Text> scoreText = new List<Text>();
+    public Text turnText;
+    public Text scoreText;
     public int idPlayering;
+    
 
     public void RunTurn(int numberBox)
     {
         switch(idPlayering)
         {
-            case 0:
-                turnText[idPlayering].gameObject.SetActive(false);
-                scoreText[idPlayering].gameObject.SetActive(false);
+            case 0:                
                 idPlayering = 1;
-                turnText[idPlayering].gameObject.SetActive(true);
-                scoreText[idPlayering].gameObject.SetActive(true);
+                turnText.text = "Игрок " + (idPlayering + 1).ToString();
+                scoreText.text = players[idPlayering].score.ToString();
                 break;
+
             case 1:
-                turnText[idPlayering].gameObject.SetActive(false);
-                scoreText[idPlayering].gameObject.SetActive(false);
                 idPlayering = 0;
-                turnText[idPlayering].gameObject.SetActive(true);
-                scoreText[idPlayering].gameObject.SetActive(true);
+                turnText.text = "Игрок " + (idPlayering + 1).ToString();
+                scoreText.text = players[idPlayering].score.ToString();
                 break;
+
+            /*case 2:
+                idPlayering = 3;
+                turnText.text = "Игрок " + (idPlayering + 1).ToString();
+                scoreText.text = players[idPlayering].score.ToString();
+                break;
+
+            case 3:
+                idPlayering = 0;
+                turnText.text = "Игрок " + (idPlayering + 1).ToString();
+                scoreText.text = players[idPlayering].score.ToString();
+                break;*/
         }
 
     }
