@@ -12,6 +12,9 @@ public class playerMovement : MonoBehaviour
     public int score;
     public int numberBox;
 
+    public Vector3 moveAt;
+    Vector3 transit;
+
     public List<Sprite> imgNumber = new List<Sprite>();
     public Image dice;
     public turnManager turnMan;
@@ -20,7 +23,6 @@ public class playerMovement : MonoBehaviour
     int backSteps;
 
     public Image endGame;
-    public List<Text> scores = new List<Text>();
 
     void Start()
     {
@@ -30,7 +32,10 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        if (turnMan.numPlayers < (numberBox + 1) && turnMan.start)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
     public void RollDice()
     {
@@ -144,8 +149,8 @@ public class playerMovement : MonoBehaviour
     {
         Time.timeScale = 0f;
         endGame.gameObject.SetActive(true);
-        scores[0].text = turnMan.players[0].score.ToString();
-        scores[1].text = turnMan.players[1].score.ToString();
+        //scores[0].text = turnMan.players[0].score.ToString();
+        //scores[1].text = turnMan.players[1].score.ToString();
 
     }
 
@@ -162,6 +167,28 @@ public class playerMovement : MonoBehaviour
             case "hardTile":
                 typeQuiz = "hard";
                 break;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            transit = this.transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, moveAt, 16f * Time.deltaTime);
+
+
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+
+            transform.position = Vector3.MoveTowards(transform.position, transit, 16f * Time.deltaTime);
+
+
         }
     }
 
